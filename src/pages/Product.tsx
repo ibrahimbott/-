@@ -1,5 +1,5 @@
-import productFlatlay from '../assets/images/product-flatlay.jpeg';
-import pumpBottle from '../assets/images/pump-bottle.jpeg';
+import productFlatlay from '../assets/images/flat-lay-composition-of-6-different-skincare-produ.jpeg';
+import pumpBottle from '../assets/images/photorealistic-premium-pump-bottle-of-body-lotion-.jpeg';
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Star, ShieldCheck, Heart, Truck, RefreshCcw, Share2, Facebook, Twitter, Instagram, ChevronRight, ChevronLeft } from "lucide-react";

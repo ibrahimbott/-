@@ -1,4 +1,4 @@
-import whiteJar from '../assets/images/white-jar.jpeg';
+import whiteJar from '../assets/images/high-quality-product-photo-of-a-large-elegant-whit.jpeg';
 import { Leaf, ShieldCheck, Heart, Award } from "lucide-react";
 
 export function About() {
