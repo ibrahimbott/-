@@ -1,8 +1,8 @@
-import heroBanner from '../assets/images/luxurious-hero-banner-for-arabic-skincare-website-.jpeg';
-import productFlatlay from '../assets/images/flat-lay-composition-of-6-different-skincare-produ.jpeg';
-import pumpBottle2 from '../assets/images/photorealistic-premium-pump-bottle-of-body-lotion- (1).jpeg';
-import heroBanner2 from '../assets/images/luxurious-hero-banner-for-arabic-skincare-website--1.jpeg';
-import lipBalm2 from '../assets/images/close-up-studio-photo-of-elegant-lip-balm-tube-sau (1).jpeg';
+import heroBanner from '../assets/images/hero-banner.jpeg';
+import productFlatlay from '../assets/images/product-flatlay.jpeg';
+import pumpBottle2 from '../assets/images/pump-bottle-alt.jpeg';
+import heroBanner2 from '../assets/images/hero-banner-2.jpeg';
+import lipBalm2 from '../assets/images/lip-balm-alt.jpeg';
 
 import { motion } from "motion/react";
 import { Star, ShieldCheck, Truck, Droplet, Leaf, Eye, Instagram, Heart } from "lucide-react";

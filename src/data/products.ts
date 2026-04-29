@@ -1,11 +1,11 @@
-import productFlatlay from '../assets/images/flat-lay-composition-of-6-different-skincare-produ.jpeg';
-import whiteJar from '../assets/images/high-quality-product-photo-of-a-large-elegant-whit.jpeg';
-import lipBalm2 from '../assets/images/close-up-studio-photo-of-elegant-lip-balm-tube-sau (1).jpeg';
-import premiumSerum from '../assets/images/photorealistic-studio-product-photography-of-a-pre.jpeg';
-import lipBalm from '../assets/images/close-up-studio-photo-of-elegant-lip-balm-tube-sau.jpeg';
-import pumpBottle from '../assets/images/photorealistic-premium-pump-bottle-of-body-lotion-.jpeg';
-import pumpBottle2 from '../assets/images/photorealistic-premium-pump-bottle-of-body-lotion- (1).jpeg';
-import heroBanner2 from '../assets/images/luxurious-hero-banner-for-arabic-skincare-website--1.jpeg';
+import productFlatlay from '../assets/images/product-flatlay.jpeg';
+import whiteJar from '../assets/images/white-jar-elegant.jpeg';
+import lipBalm2 from '../assets/images/lip-balm-alt.jpeg';
+import premiumSerum from '../assets/images/premium-serum.jpeg';
+import lipBalm from '../assets/images/lip-balm.jpeg';
+import pumpBottle from '../assets/images/pump-bottle.jpeg';
+import pumpBottle2 from '../assets/images/pump-bottle-alt.jpeg';
+import heroBanner2 from '../assets/images/hero-banner-2.jpeg';
 
 export const products = [
   { 
