@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Helvetica Neue', Arial, "Tajawal", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-emerald: #064E3B;
+  --color-brand-emerald-light: #043629;
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-light: #E6C55F;
+  --color-brand-beige: #F5F2ED;
+  --color-brand-sand: #EAE5DD;
+  --color-brand-dark: #1A1A1A;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-beige);
+  color: var(--color-brand-dark);
+}
