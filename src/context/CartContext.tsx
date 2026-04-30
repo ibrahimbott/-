@@ -3,14 +3,20 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 export interface Product {
   id: number;
   name: string;
+  name_en?: string;
   description: string;
+  description_en?: string;
   longDescription?: string;
+  longDescription_en?: string;
   price: string;
   image: string;
   category: string;
+  category_en?: string;
   rating?: number;
   ingredients?: string;
+  ingredients_en?: string;
   usage?: string;
+  usage_en?: string;
 }
 
 interface CartItem extends Product {

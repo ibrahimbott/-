@@ -1,62 +1,80 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import { Star, Heart, Eye } from "lucide-react";
+import { Star, Heart, Eye, ShoppingCart } from "lucide-react";
 import { motion } from "motion/react";
 import { type Product } from "../context/CartContext";
 import { useCart } from "../context/CartContext";
 import { useStore } from "../context/StoreContext";
+import { useApp } from "../context/AppContext";
 
-export function ProductCard({ product }: { product: Product }) {
+export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
   const { addToCart } = useCart();
   const { setQuickViewProduct, toggleWishlist, isInWishlist } = useStore();
+  const { language } = useApp();
+
+  const displayName = language === 'en' ? (product.name_en || product.name) : product.name;
+  const displayCategory = language === 'en' ? (product.category_en || product.category) : product.category;
 
   return (
     <motion.div 
-      initial={{ opacity: 1, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3 }}
-      
-      className="bg-white border border-[#F0F0F0] rounded-[4px] overflow-hidden group hover:shadow-xl transition-shadow relative flex flex-col h-full"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="bg-white dark:bg-gray-900 border border-[#F0F0F0] dark:border-white/5 rounded-[12px] overflow-hidden group hover:shadow-2xl transition-all duration-300 relative flex flex-col h-full transform translate-y-0 hover:-translate-y-2"
     >
-      <div className="absolute top-3 left-3 flex flex-col gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="absolute top-4 left-4 flex flex-col gap-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
         <button 
-          onClick={() => toggleWishlist(product)}
-          className="w-8 h-8 bg-white border border-[#EAE5DD] rounded-full flex items-center justify-center hover:bg-red-50 hover:text-red-500 hover:border-red-200 transition-colors shadow-sm"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(product); }}
+          className="w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border border-[#EAE5DD] dark:border-white/10 rounded-full flex items-center justify-center hover:bg-red-50 hover:text-red-500 transition-colors shadow-lg"
+          aria-label="Add to Wishlist"
         >
-          <Heart className={`w-4 h-4 ${isInWishlist(product.id) ? 'fill-current text-red-500' : 'text-[#777]'}`} />
+          <Heart className={`w-5 h-5 ${isInWishlist(product.id) ? 'fill-current text-red-500' : 'text-[#777]'}`} />
         </button>
         <button 
-          onClick={() => setQuickViewProduct(product)}
-          className="w-8 h-8 bg-white border border-[#EAE5DD] rounded-full flex items-center justify-center hover:bg-gray-50 hover:text-brand-dark transition-colors shadow-sm"
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); setQuickViewProduct(product); }}
+          className="w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border border-[#EAE5DD] dark:border-white/10 rounded-full flex items-center justify-center hover:bg-brand-emerald hover:text-white transition-colors shadow-lg"
+          aria-label="Quick View"
         >
-          <Eye className="w-4 h-4 text-[#777]" />
+          <Eye className="w-5 h-5" />
         </button>
       </div>
 
-      <Link to={`/product/${product.id}`} className="block h-[200px] bg-[#F9F9F9] relative overflow-hidden flex items-center justify-center p-4">
-        <img src={product.image} alt={product.name} className="max-w-full max-h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
+      <Link to={`/product/${product.id}`} className="block h-[260px] bg-[#F9F9F9] dark:bg-gray-800/50 relative overflow-hidden flex items-center justify-center p-6">
+        <img 
+          src={product.image} 
+          alt={displayName} 
+          className="max-w-full max-h-full object-contain mix-blend-multiply dark:mix-blend-normal group-hover:scale-110 transition-transform duration-700 ease-out" 
+        />
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
       </Link>
       
-      <div className="p-4 border-t border-[#F0F0F0] flex flex-col flex-1">
-        <div>
+      <div className="p-6 flex flex-col flex-1">
+        <div className="mb-4">
+          <span className="text-brand-gold text-[12px] font-[800] uppercase tracking-widest mb-1 block">
+            {displayCategory}
+          </span>
           <Link to={`/product/${product.id}`}>
-            <h3 className="font-[700] text-[15px] mb-1 line-clamp-1 hover:text-brand-emerald transition-colors">{product.name}</h3>
+            <h3 className="font-[900] text-[17px] text-brand-dark dark:text-white mb-2 line-clamp-1 hover:text-brand-emerald transition-colors leading-snug">
+              {displayName}
+            </h3>
           </Link>
-          <div className="flex text-brand-gold mb-2">
+          <div className="flex text-brand-gold gap-0.5">
              {[...Array(5)].map((_, i) => (
-               <Star key={i} className={`w-3 h-3 ${i < (product.rating || 5) ? 'fill-current' : 'text-gray-300'}`} />
+               <Star key={i} className={`w-3.5 h-3.5 ${i < (product.rating || 5) ? 'fill-current' : 'text-gray-200 dark:text-gray-700'}`} />
              ))}
           </div>
         </div>
         
-        <div className="flex justify-between items-center mt-auto pt-3">
-          <div className="text-[18px] font-[800] text-brand-emerald leading-[1]" dir="ltr">
-            <span className="icon-saudi_riyal mr-1 text-[22px]"></span>{product.price}
+        <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-50 dark:border-white/5">
+          <div className="text-[20px] font-[900] text-brand-emerald dark:text-emerald-400 leading-[1]" dir="ltr">
+            {product.price} <span className="text-[12px] ml-0.5 font-[700]">SAR</span>
           </div>
           <button 
-            onClick={() => addToCart(product)}
-            className="bg-brand-emerald text-white w-8 h-8 rounded-[2px] flex items-center justify-center text-[20px] font-bold hover:bg-[#043629] transition-colors leading-[0] pb-1 shadow-sm shadow-brand-emerald/20"
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCart(product); }}
+            className="w-12 h-12 bg-brand-emerald dark:bg-emerald-600 text-white rounded-[10px] flex items-center justify-center hover:bg-brand-emerald-light transition-all shadow-xl active:scale-90"
+            aria-label="Add to Cart"
           >
-            +
+            <ShoppingCart className="w-5 h-5" />
           </button>
         </div>
       </div>

@@ -2,18 +2,33 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Helvetica Neue', Arial, "Tajawal", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Tajawal", 'Helvetica Neue', Arial, ui-sans-serif, system-ui, sans-serif;
   --color-brand-emerald: #064E3B;
   --color-brand-emerald-light: #043629;
   --color-brand-gold: #D4AF37;
   --color-brand-gold-light: #E6C55F;
-  --color-brand-beige: #F5F2ED;
+  --color-brand-beige: #FDFBF7;
   --color-brand-sand: #EAE5DD;
   --color-brand-dark: #1A1A1A;
 }
 
+@layer base {
+  body {
+    @apply bg-brand-beige text-brand-dark transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-brand-dark text-white;
+  }
+}
+
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-brand-beige);
-  color: var(--color-brand-dark);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
